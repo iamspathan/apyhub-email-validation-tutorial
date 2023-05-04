@@ -1,0 +1,20 @@
+{
+  "name": "apyhub-auth",
+  "version": "1.0.0",
+  "description": "Email Validation Tutorial",
+  "main": "server.js",
+  "scripts": {
+    "test": "test",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/iamspathan/apyhub-email-validation-tutorial.git"
+  },
+  "author": "Sohail Pathan",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/iamspathan/apyhub-email-validation-tutorial/issues"
+  },
+  "homepage": "https://github.com/iamspathan/apyhub-email-validation-tutorial#readme"
+}
