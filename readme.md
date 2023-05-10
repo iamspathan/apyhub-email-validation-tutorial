@@ -27,6 +27,6 @@ Connected to database
 
 ```
 
-Open [/index.html](https://github.com/iamspathan/apyhub-email-validation-tutorial/blob/main/index.html)
+Navigate to [http://localhost:3000](http://localhost:3000)
 
 
