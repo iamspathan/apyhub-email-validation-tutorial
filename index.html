@@ -1,7 +1,8 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Email Validation with Apyhub/title>
+    <title>Email Validation with Apyhub </title>
+    
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -46,27 +47,25 @@
       }
 
       .tick {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/130/130277.png');
+        background-image: url('https://www.flaticon.com/free-icon/check-mark_5291043?term=tick&page=1&position=1&origin=tag&related_id=5291043');
         background-size: 18px 18px;
         background-repeat: no-repeat;
         background-position: right center;
         padding-right: 25px;
       }
       .cross {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/564/564619.png');
+        background-image: url('https://cdn-icons-png.flaticon.com/512/564/.png');
         background-size: 18px 18px;
         background-repeat: no-repeat;
         background-position: right center;
         padding-right: 25px;
       }
 
-
-
     </style>
   </head>
   <body>
-    <h1><img src="https://www.linkpicture.com/q/apyhub-mascot-1.png"  class="center" width="20%"  height="20%" alt="Apyhub Mascot">Email Validation</h1>
-    <form action="/signup" method="POST" onsubmit="submitForm(event)">
+    <h1><img src="https://www.linkpicture.com/q/apyhub-mascot-1.png"  class="left" width="20%"  height="20%" alt="Apyhub Mascot">Signup with DNS Email Validation</h1>
+    <form action="/signup" method="POST" onsubmit="signupForm(event)">
       <label for="email">Email:</label>
       <input type="email" id="email" name="email" onkeyup="checkEmailValidity(this)">
       <label for="password">Password:</label>
@@ -83,9 +82,8 @@
       <input type="submit" value="Log In">
     </form> -->
     
-    <script>
+  <script>  
 
-      
     function loginForm(event) {
 
         event.preventDefault(); // prevent the form from submitting normally
@@ -114,8 +112,6 @@
       }
 
 
-
-
     function signupForm(event) {
         event.preventDefault(); // prevent the form from submitting normally
 
@@ -135,16 +131,18 @@
         })
           .then(response => {
             if (response.ok) {
-              console.log("Login successful!");
+              console.log("Signup successful!");
+              alert("Signup successful!");
             } else {
-              throw new Error("Login failed");
+              alert("Signup SUCCESSFUL!");
+              throw new Error("Signup failed");
+              
             }
           })
           .catch(error => {
             console.error(error);
           });
       }
-
 
 
       function checkEmailValidity(input) {
@@ -162,8 +160,6 @@
         }
       }
 
-
     </script>
-
   </body>
 </html>

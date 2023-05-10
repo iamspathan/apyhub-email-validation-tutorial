@@ -4,8 +4,11 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
 const mongoose = require("mongoose");
+const cors = require('cors');
 const app = express();
 
+app.use(cors({ allowedHeaders: 'Content-Type, Cache-Control' }));
+app.options('*', cors());
 app.use(bodyParser.json());
 
 

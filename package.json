@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/iamspathan/apyhub-email-validation-tutorial/issues"
   },
-  "homepage": "https://github.com/iamspathan/apyhub-email-validation-tutorial#readme"
+  "homepage": "https://github.com/iamspathan/apyhub-email-validation-tutorial#readme",
+  "dependencies": {
+    "cors": "^2.8.5"
+  }
 }
