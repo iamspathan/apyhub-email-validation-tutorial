@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>User Signup and Authentication</title>
+    <title>Email Validation with Apyhub/title>
     <style>
       body {
         font-family: Arial, sans-serif;
@@ -44,15 +44,31 @@
       input[type="submit"]:hover {
         background-color: #3e8e41;
       }
+
+      .tick {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/130/130277.png');
+        background-size: 18px 18px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 25px;
+      }
+      .cross {
+        background-image: url('https://cdn-icons-png.flaticon.com/512/564/564619.png');
+        background-size: 18px 18px;
+        background-repeat: no-repeat;
+        background-position: right center;
+        padding-right: 25px;
+      }
+
+
+
     </style>
   </head>
   <body>
     <h1><img src="https://www.linkpicture.com/q/apyhub-mascot-1.png"  class="center" width="20%"  height="20%" alt="Apyhub Mascot">Email Validation</h1>
-    <form action="/signup" method="POST">
-      <label for="username">Username:</label>
-      <input type="text" id="username" name="username">
+    <form action="/signup" method="POST" onsubmit="submitForm(event)">
       <label for="email">Email:</label>
-      <input type="email" id="email" name="email">
+      <input type="email" id="email" name="email" onkeyup="checkEmailValidity(this)">
       <label for="password">Password:</label>
       <input type="password" id="password" name="password">
       <input type="submit" value="Sign Up">
@@ -66,5 +82,88 @@
       <input type="password" id="password" name="password">
       <input type="submit" value="Log In">
     </form> -->
+    
+    <script>
+
+      
+    function loginForm(event) {
+
+        event.preventDefault(); // prevent the form from submitting normally
+
+        const form = event.target; // get the form element
+        const url = "http://localhost:3000"; // set the URL to send the request to
+
+        // create a new XMLHttpRequest object
+        const xhr = new XMLHttpRequest();
+
+        // set up the request
+        xhr.open("POST", url, true);
+        xhr.setRequestHeader("Content-Type", "application/json");
+
+        // set up a callback function to handle the response
+        xhr.onreadystatechange = function() {
+          if (xhr.readyState === 4 && xhr.status === 200) {
+            console.log(xhr.responseText); // log the response text to the console
+          }
+        }
+
+        // send the request with the form data as JSON
+        const formData = new FormData(form);
+        const data = JSON.stringify(Object.fromEntries(formData.entries()));
+        xhr.send(data);
+      }
+
+
+
+
+    function signupForm(event) {
+        event.preventDefault(); // prevent the form from submitting normally
+
+        const form = event.target; // get the form element
+        const url = "http://localhost:3000/signup"; // set the URL to send the request to
+
+        // create a new FormData object to store the form data
+        const formData = new FormData(form);
+
+        // create a new fetch request with the form data as a JSON payload
+        fetch(url, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(Object.fromEntries(formData.entries()))
+        })
+          .then(response => {
+            if (response.ok) {
+              console.log("Login successful!");
+            } else {
+              throw new Error("Login failed");
+            }
+          })
+          .catch(error => {
+            console.error(error);
+          });
+      }
+
+
+
+      function checkEmailValidity(input) {
+        if (input.value.trim() === '') {
+          input.classList.remove('tick');
+          input.classList.remove('cross');
+          return;
+        }
+        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
+          input.classList.add('tick');
+          input.classList.remove('cross');
+        } else {
+          input.classList.add('cross');
+          input.classList.remove('tick');
+        }
+      }
+
+
+    </script>
+
   </body>
 </html>

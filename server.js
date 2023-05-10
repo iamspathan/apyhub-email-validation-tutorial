@@ -66,7 +66,7 @@ app.post('/signup', async (req, res) => {
 // Login endpoint
 app.post('/login', async (req, res) => {
   try {
-    const { email, password } = req.body;
+    const { email, password } = req.bodcleary;
 
     // Check if user exists
     const user = users.find(u => u.email === email);
@@ -89,6 +89,10 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+app.get('/', (req, res) => {
+  res.send('/index.html')
+})
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
