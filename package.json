@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/iamspathan/apyhub-email-validation-tutorial#readme",
   "dependencies": {
+    "apyhub": "^0.1.12",
     "cors": "^2.8.5"
   }
 }

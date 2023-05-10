@@ -35,7 +35,7 @@ app.post('/signup', async (req, res) => {
     //validate email using ApyHub API
     const response = await axios.post('https://api.apyhub.com/validate/email/dns', { email }, {
       headers: {
-        'apy-token': 'APY0BOODK2plpXgxRjezmBOXqID51DGpFq8QnHJeBQrrzuIBc25UIglN93bbwvnkBWlUia1',
+        'apy-token': 'ADD-YOUR-UNIQUE-APY-TOKEN',
         'Content-Type': 'application/json'
       }
     });
