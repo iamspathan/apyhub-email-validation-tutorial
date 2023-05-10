@@ -10,7 +10,8 @@ const app = express();
 app.use(cors({ allowedHeaders: 'Content-Type, Cache-Control' }));
 app.options('*', cors());
 app.use(bodyParser.json());
-app.use(express.static(__dirname + '/public'));
+app.use(express.static(__dirname + '/public')); //__dir and not _dir
+
 
 
 // Connect to MongoDB database
@@ -36,7 +37,7 @@ app.post('/signup', async (req, res) => {
     //validate email using ApyHub API
     const response = await axios.post('https://api.apyhub.com/validate/email/dns', { email }, {
       headers: {
-        'apy-token': 'ADD-YOUR-UNIQUE-APY-TOKEN',
+        'apy-token': 'APY0q37lVqWKoW6ggl7T9CmdsqFlZvigsiR70b0KIiGkrVuSR6aA8KsQU9O4WvbMjZAWHikXCZR',
         'Content-Type': 'application/json'
       }
     });
