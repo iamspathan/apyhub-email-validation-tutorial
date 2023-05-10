@@ -10,6 +10,7 @@ const app = express();
 app.use(cors({ allowedHeaders: 'Content-Type, Cache-Control' }));
 app.options('*', cors());
 app.use(bodyParser.json());
+app.use(express.static(__dirname + '/public'));
 
 
 // Connect to MongoDB database
@@ -93,9 +94,8 @@ app.post('/login', async (req, res) => {
   }
 });
 
-app.get('/', (req, res) => {
-  res.send('/index.html')
-})
+
+
 
 app.listen(3000, () => {
   console.log('Server started on port 3000');
