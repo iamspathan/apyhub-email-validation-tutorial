@@ -46,21 +46,6 @@
         background-color: #3e8e41;
       }
 
-      .tick {
-        background-image: url('https://www.flaticon.com/free-icon/check-mark_5291043?term=tick&page=1&position=1&origin=tag&related_id=5291043');
-        background-size: 18px 18px;
-        background-repeat: no-repeat;
-        background-position: right center;
-        padding-right: 25px;
-      }
-      .cross {
-        background-image: url('https://cdn-icons-png.flaticon.com/512/564/.png');
-        background-size: 18px 18px;
-        background-repeat: no-repeat;
-        background-position: right center;
-        padding-right: 25px;
-      }
-
     </style>
   </head>
   <body>
@@ -134,7 +119,7 @@
               console.log("Signup successful!");
               alert("Signup successful!");
             } else {
-              alert("Signup SUCCESSFUL!");
+              alert("Signup Failed");
               throw new Error("Signup failed");
               
             }
@@ -142,22 +127,6 @@
           .catch(error => {
             console.error(error);
           });
-      }
-
-
-      function checkEmailValidity(input) {
-        if (input.value.trim() === '') {
-          input.classList.remove('tick');
-          input.classList.remove('cross');
-          return;
-        }
-        if (/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(input.value)) {
-          input.classList.add('tick');
-          input.classList.remove('cross');
-        } else {
-          input.classList.add('cross');
-          input.classList.remove('tick');
-        }
       }
 
     </script>

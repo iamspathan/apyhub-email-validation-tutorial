@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 const axios = require('axios');
-const mongoose = require("mongoose");
 const cors = require('cors');
 const app = express();
 
@@ -13,21 +12,7 @@ app.use(bodyParser.json());
 app.use(express.static(__dirname + '/public')); //__dir and not _dir
 
 
-
-// Connect to MongoDB database
-mongoose.connect('mongodb://localhost/auth_app', {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('Connected to database'))
-  .catch(err => console.error('Error connecting to database:', err));
-
-  // Define user schema
-const userSchema = new mongoose.Schema({
-  email: { type: String, required: true, unique: true },
-  password: { type: String, required: true }
-});
-const User = mongoose.model('User', userSchema);
-
+const users = []; 
 
 // Signup endpoint
 app.post('/signup', async (req, res) => {
@@ -42,7 +27,7 @@ app.post('/signup', async (req, res) => {
       }
     });
    
-    if (!res.isValid) {
+    if (!response.data) {
       return res.status(400).json({ message: 'Invalid email address' });
     }
 
@@ -57,11 +42,10 @@ app.post('/signup', async (req, res) => {
     const saltRounds = 10;
     const hashedPassword = await bcrypt.hash(password, saltRounds);
 
-    // Create new user
-    const newUser = new User({ email, password: hashedPassword });
-    await newUser.save();
-
+    // Save user
+    users.push({ email, password: hashedPassword });
     res.status(201).json({ message: 'User created' });
+
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: 'Internal server error' });
@@ -94,7 +78,6 @@ app.post('/login', async (req, res) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
-
 
 
 
