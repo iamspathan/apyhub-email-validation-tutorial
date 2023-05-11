@@ -22,12 +22,12 @@ app.post('/signup', async (req, res) => {
     //validate email using ApyHub API
     const response = await axios.post('https://api.apyhub.com/validate/email/dns', { email }, {
       headers: {
-        'apy-token': 'APY0q37lVqWKoW6ggl7T9CmdsqFlZvigsiR70b0KIiGkrVuSR6aA8KsQU9O4WvbMjZAWHikXCZR',
+        'apy-token': 'ADD-YOUR-APY-TOKEN-HERE',
         'Content-Type': 'application/json'
       }
     });
    
-    if (!response.data) {
+    if (!response.data.data) {
       return res.status(400).json({ message: 'Invalid email address' });
     }
 
@@ -80,7 +80,6 @@ app.post('/login', async (req, res) => {
 });
 
 
-
 app.listen(3000, () => {
-  console.log('Server started on port 3000');
+  console.log('Server started: http://localhost:3000');
 });
